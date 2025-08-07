@@ -17,7 +17,7 @@ import {of} from "rxjs";
 })
 
 export class LogsComponent {
-  // private logService = inject(VehicleLogService);
+  private logService = inject(VehicleLogService);
 
   logs = signal<VehicleLogData[]>([]);
   loading = signal(false);
@@ -28,29 +28,15 @@ export class LogsComponent {
     this.loading.set(true);
     this.error.set(null);
 
-    // Simulate async fetch:
-    setTimeout(() => {
-      this.logs.set([
-        {
-          log_timestamp: '2025-01-03T05:35:50.000Z',
-          vehicle_id: '1011',
-          log_level: 'WARN',
-          code: 'P0301',
-          message: 'Cylinder 1 misfire detected'
-        }
-      ]);
-      this.loading.set(false);
-    }, 1000);
-
-    // this.logService.getLogs(filters).pipe(
-    //   catchError(err => {
-    //     this.error.set('Failed to load logs');
-    //     return of([]);
-    //   }),
-    //   finalize(() => this.loading.set(false))
-    // ).subscribe(data => {
-    //   this.logs.set(data);
-    // });
+    this.logService.getLogs(filters).pipe(
+      catchError(err => {
+        this.error.set('Failed to load logs');
+        return of([]);
+      }),
+      finalize(() => this.loading.set(false))
+    ).subscribe(data => {
+      this.logs.set(data);
+    });
   }
 }
 
