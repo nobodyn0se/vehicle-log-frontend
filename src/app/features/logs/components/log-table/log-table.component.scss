@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+  overflow-x: auto;
+
+  th {
+    font-weight: 600;
+  }
+
+  td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .warn {
+    color: #ff9800;
+  }
+
+  .error {
+    color: #f44336;
+  }
+
+  .info {
+    color: #2196f3;
+  }
+}
+
+.no-data {
+  text-align: center;
+  margin-top: 1rem;
+  color: #777;
+}
