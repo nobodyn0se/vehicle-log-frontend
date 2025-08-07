@@ -13,17 +13,17 @@ import {MatButton} from '@angular/material/button';
 
 export class LogSearchComponent {
   @Output() search = new EventEmitter<{
-    vehicle_id?: string;
+    vehicleId?: string;
     code?: string;
-    start?: string;
-    end?: string;
+    startDate?: string;
+    endDate?: string;
   }>();
 
   form = new FormGroup({
-    vehicle_id: new FormControl<string>(''),
+    vehicleId: new FormControl<string>(''),
     code: new FormControl<string>(''),
-    start: new FormControl<string>(''),
-    end: new FormControl<string>('')
+    startDate: new FormControl<string | null>(null),
+    endDate: new FormControl<string | null>(null)
   });
 
   onSubmit() {
@@ -33,11 +33,13 @@ export class LogSearchComponent {
     const cleaned = Object.fromEntries(
       Object.entries(raw).map(([k, v]) => [k, v ?? undefined])
     ) as {
-      vehicle_id?: string;
+      vehicleId?: string;
       code?: string;
-      start?: string;
-      end?: string;
+      startDate?: string;
+      endDate?: string;
     };
+
+    console.log(cleaned);
 
     this.search.emit(cleaned);
   }
