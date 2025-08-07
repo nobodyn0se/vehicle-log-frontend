@@ -5,3 +5,10 @@ export interface VehicleLogData {
   code: string;
   message: string;
 }
+
+export interface SearchFilters {
+  vehicleId?: string;
+  code?: string;
+  startDate?: string;
+  endDate?: string;
+}
