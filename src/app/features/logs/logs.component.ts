@@ -7,6 +7,7 @@ import {SearchFilters, VehicleLogData} from '../../models/vehicle-log.model';
 import {VehicleLogService} from "../../services/vehicle-log.service";
 import {catchError, finalize} from "rxjs/operators";
 import {of} from "rxjs";
+import {VehicleLogsStore} from "../../store/vehicle-log.store";
 
 @Component({
   selector: 'app-logs',
@@ -17,27 +18,15 @@ import {of} from "rxjs";
 })
 
 export class LogsComponent {
-  private logService = inject(VehicleLogService);
+  private store = inject(VehicleLogsStore);
 
-  logs = signal<VehicleLogData[]>([]);
-  loading = signal(false);
-  error = signal<string | null>(null);
+  logs = this.store.logs;
+  loading = this.store.loading;
+  error = this.store.error;
 
-  // Mock search handler: replace with real API call
-  onSearch(filters: SearchFilters) {
 
-    this.loading.set(true);
-    this.error.set(null);
-
-    this.logService.getLogs(filters).pipe(
-      catchError(err => {
-        this.error.set('Failed to load logs');
-        return of([]);
-      }),
-      finalize(() => this.loading.set(false))
-    ).subscribe(data => {
-      this.logs.set(data);
-    });
+  onSearch(filters: any) {
+    this.store.fetchLogs(filters);
   }
 }
 
