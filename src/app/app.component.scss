@@ -12,7 +12,6 @@ mat-toolbar {
 .content-container {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center the content vertically */
   align-items: center; /* Center the content horizontally */
   flex-grow: 1; /* Allow this container to grow and fill the remaining space */
   padding: 20px;
