@@ -1,0 +1,70 @@
+/* Ensure the entire app fills the height of the viewport */
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Take up full viewport height */
+}
+
+mat-toolbar {
+  flex-shrink: 0; /* Prevent toolbar from shrinking */
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the content vertically */
+  align-items: center; /* Center the content horizontally */
+  flex-grow: 1; /* Allow this container to grow and fill the remaining space */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fafafa; /* Light background for better contrast */
+}
+
+.loading,
+.error {
+  margin: 1rem;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.loading {
+  color: #007bff; /* Blue for loading */
+}
+
+.error {
+  color: #f44336; /* Red for error */
+}
+
+p {
+  font-size: 16px;
+  color: #777;
+  text-align: center;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+mat-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto; /* Center the spinner */
+}
+
+app-log-table {
+  width: 100%;
+  max-width: 1200px; /* Restrict max-width for large screens */
+  margin: 0 auto; /* Center the table */
+}
+
+@media screen and (max-width: 768px) {
+  .loading,
+  .error,
+  p {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  mat-spinner {
+    width: 30px;
+    height: 30px;
+  }
+}

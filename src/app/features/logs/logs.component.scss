@@ -1,3 +1,70 @@
-.loading,
+/* Parent container that holds all the content */
+.parent-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  min-height: 100vh; /* Full height of the screen */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fafafa; /* Light background for better contrast */
+}
 
-.error { margin: 1rem; text-align: center; }
+/* Common style for centering loaders and tables */
+.centered-content {
+  width: 100%;
+  max-width: 1200px; /* Restrict max-width for better readability on large screens */
+  margin: 0 auto; /* Center horizontally */
+  text-align: center;
+}
+
+.loading,
+.error {
+  margin: 1rem;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.loading {
+  color: #007bff; /* Blue for loading */
+}
+
+.error {
+  color: #f44336; /* Red for error */
+}
+
+p {
+  font-size: 16px;
+  color: #777;
+  text-align: center;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+mat-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto; /* Center spinner */
+}
+
+/* Table centering */
+app-log-table {
+  width: 100%;
+  max-width: 1200px; /* Restrict table max-width */
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Add responsiveness */
+@media screen and (max-width: 768px) {
+  .loading,
+  .error,
+  p {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  mat-spinner {
+    width: 30px;
+    height: 30px;
+  }
+}

@@ -1,12 +1,12 @@
 <app-log-search (search)="onSearch($event)"></app-log-search>
 
-<div *ngIf="loading()" class="loading">
-    <mat-spinner></mat-spinner>
+<div *ngIf="loading()" class="loading centered-content">
+  <mat-spinner></mat-spinner>
 </div>
 
-<div *ngIf="error()" class="error">{{ error() }}</div>
+<div *ngIf="error()" class="error centered-content">{{ error() }}</div>
 
-<app-log-table *ngIf="!loading() && !error() && logs().length > 0" [logs]="logs()"></app-log-table>
+<app-log-table *ngIf="!loading() && !error() && logs().length > 0" [logs]="logs()" class="centered-content"></app-log-table>
 
 <ng-container *ngIf="!loading() && !error() && (!logs() || logs().length === 0)">
   <p>No logs found.</p>
