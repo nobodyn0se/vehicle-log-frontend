@@ -26,7 +26,7 @@ export class VehicleLogsStore {
     this.logService.getLogs(filters).pipe(
       finalize(() => this._loading.set(false)),
       catchError(err => {
-        this._error.set(err?.message || 'Unknown error');
+        this._error.set('Unable to get vehicle logs');
         return of([]);
       })
     ).subscribe(logs => {
