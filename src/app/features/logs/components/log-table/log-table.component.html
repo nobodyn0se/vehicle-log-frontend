@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="logs" class="mat-elevation-z2" *ngIf="logs.length > 0; else noData">
+<table mat-table [dataSource]="logs" class="mat-elevation-z2">
 
   <ng-container matColumnDef="timestamp">
     <th mat-header-cell *matHeaderCellDef> Timestamp </th>
@@ -28,7 +28,3 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-<ng-template #noData>
-  <p>No logs found.</p>
-</ng-template>

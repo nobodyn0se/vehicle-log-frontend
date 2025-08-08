@@ -6,4 +6,8 @@
 
 <div *ngIf="error()" class="error">{{ error() }}</div>
 
-<app-log-table [logs]="logs()"></app-log-table>
+<app-log-table *ngIf="!loading() && !error() && logs().length > 0" [logs]="logs()"></app-log-table>
+
+<ng-container *ngIf="!loading() && !error() && (!logs() || logs().length === 0)">
+  <p>No logs found.</p>
+</ng-container>
